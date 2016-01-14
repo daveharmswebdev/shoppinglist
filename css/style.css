@@ -53,3 +53,25 @@ header, .container, .title, .instructions, .controls, .lists, .store, footer {
 .clearfix {
   *zoom: 1;
 }
+
+.title, .instructions, .controls, .lists {
+  text-align: center;
+}
+
+header {
+  height: 17rem;
+  background-color: lightgrey;
+}
+
+.title {
+  height: 5rem;
+}
+
+.instructions {
+  height: 12rem;
+}
+
+.controls {
+  min-height: 5rem;
+  background-color: grey;
+}
