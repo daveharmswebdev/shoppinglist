@@ -16,7 +16,7 @@ $(document).ready(function() {
       // $('ul').sortable({containment: 'parent',
       //   tolerance: 'pointer', connectWith: '.connectedSortable'
       // });
-      $('ul').sortable({connectWith: '.connectedSortable'});
+      $('ul').sortable({tolerance: 'pointer',connectWith: '.connectedSortable'});
       $('.stores').on('click', '#'+storenospace+'check', function() {
         $('.'+storenospace+'input').show();
         $('#'+storenospace+'check').hide();
@@ -30,6 +30,13 @@ $(document).ready(function() {
           console.log($('ul#'+storenospace));
           $('ul#'+storenospace).append('<li><div class=\'item clearfix\'><i class=\"fa fa-check-square fa-3x\"></i><p>'+item+'</p><i class=\"fa fa-minus-square fa-3x\"></i></div></li>');
         }
+      });
+      $('ul').on('click', '.fa-minus-square', function() {
+          $(this).parents('.item').remove();
+      });
+      $('ul').on('click', '.fa-check-square',function() {
+        console.log('click');
+        $(this).closest('div').toggleClass('check uncheck');
       });
     }
 
