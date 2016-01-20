@@ -13,9 +13,10 @@ $(document).ready(function() {
       var storenospace = store.replace(/\s+/g, '');
       $('#storeText').val('');
       $('.storelist').append('<div class=\'astore column full\'><h2>'+store+'</h2><ul id=\''+storenospace+'\' class=\'connectedSortable\'></ul><i id=\''+storenospace+'check\'class=\'fa fa-plus-circle fa-4x\'></i><input id=\'itemText\' class=\''+storenospace+'input\' type=\'text\' name=\'item\' value=\'\'></div>');
-      $('ul').sortable({containment: 'parent',
-        tolerance: 'pointer', connectWith: '.connectedSortable'
-      });
+      // $('ul').sortable({containment: 'parent',
+      //   tolerance: 'pointer', connectWith: '.connectedSortable'
+      // });
+      $('ul').sortable({connectWith: '.connectedSortable'});
       $('.stores').on('click', '#'+storenospace+'check', function() {
         $('.'+storenospace+'input').show();
         $('#'+storenospace+'check').hide();
