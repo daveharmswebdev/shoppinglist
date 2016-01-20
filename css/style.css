@@ -155,16 +155,13 @@ li {
   padding-left: 1rem;
 }
 
-.uncheck {
-  text-decoration: none;
-  font-style: normal;
-  background-color: none;
-}
-
 .check {
-  text-decoration: line-through;
   font-style: italic;
   background-color: pink;
+}
+
+.check p {
+  text-decoration: line-through;
 }
 
 .contact p {

@@ -28,18 +28,18 @@ $(document).ready(function() {
           var item = $('.'+storenospace+'input').val();
           $('.'+storenospace+'input').val('');
           console.log($('ul#'+storenospace));
-          $('ul#'+storenospace).append('<li><div class=\'item clearfix\'><i id=\'#'+storenospace+'\' class=\"fa fa-check-square fa-3x\"></i><p>'+item+'</p><i id=\'#'+storenospace+'\' class=\"fa fa-minus-square fa-3x\"></i></div></li>');
+          $('ul#'+storenospace).append('<li><div class=\'item clearfix\'><i class=\"'+storenospace+' fa fa-check-square fa-3x\"></i><p>'+item+'</p><i id=\'#'+storenospace+'\' class=\"fa fa-minus-square fa-3x\"></i></div></li>');
         }
       });
-      $('ul').on('click', '#storenospace.fa-minus-square', function() {
+      $('#'+storenospace).on('click', '.fa-minus-square', function() {
           $(this).parents('.item').remove();
       });
 
       // here is the problem down below.
 
-      $('ul').on('click', '#storenospace.fa-minus-square',function() {
+      $('#'+storenospace).on('click', '.'+storenospace+'.fa-check-square',function() {
         console.log('click '+$(this).text());
-        $(event.target).closest('.item').toggleClass('check uncheck');
+        $(this).parents('.item').toggleClass('check');
       });
 
       // here is the problem up above.
