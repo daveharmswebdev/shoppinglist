@@ -58,6 +58,10 @@ header, section, footer {
   text-align: center;
 }
 
+.astore {
+  text-align: center;
+}
+
 header {
   background-color: slategray;
 }
@@ -77,10 +81,18 @@ h1 {
   font-size: 3rem;
 }
 
-#storeText {
+#storeText, #itemText {
+  display: none;
   height: 5rem;
-  width: 15rem;
+  width: 25rem;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  text-align: center;
 }
+
+/*#itemText {
+  display: inline-block;
+}*/
 
 h2 {
   font-size: 4rem;
@@ -92,6 +104,10 @@ section {
 
 .stores {
   min-height: 10rem;
+}
+
+.astore {
+  margin-bottom: 3rem;
 }
 
 footer {
