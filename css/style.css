@@ -82,11 +82,15 @@ h1 {
   font-size: 3rem;
 }
 
+#storeText {
+  margin-bottom: 3rem;
+}
+
 #storeText, #itemText {
   display: none;
   height: 5rem;
   width: 25rem;
-  margin-bottom: 3rem;
+  margin-right: 2rem;
   font-size: 3rem;
   text-align: center;
 }
@@ -102,6 +106,7 @@ h1 {
 h2 {
   font-family: 'Autour One', cursive;
   font-size: 4rem;
+  margin: 2rem auto;
 }
 
 section {
