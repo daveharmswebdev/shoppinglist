@@ -91,6 +91,10 @@ h1 {
   text-align: center;
 }
 
+.fa-sign-in {
+  display: none;
+}
+
 /*#itemText {
   display: inline-block;
 }*/
