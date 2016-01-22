@@ -87,7 +87,7 @@ h1 {
 }
 
 #storeText, #itemText {
-  display: none;
+  /*display: none;*/
   height: 5rem;
   width: 25rem;
   margin-right: 2rem;
@@ -96,7 +96,7 @@ h1 {
 }
 
 .fa-sign-in {
-  display: none;
+  /*display: none;*/
 }
 
 /*#itemText {
