@@ -82,12 +82,8 @@ h1 {
   font-size: 3rem;
 }
 
-#storeText {
+#inputBox {
   margin-bottom: 3rem;
-}
-
-#storeText, #itemText {
-  /*display: none;*/
   height: 5rem;
   width: 25rem;
   margin-right: 2rem;

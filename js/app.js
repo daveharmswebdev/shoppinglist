@@ -2,40 +2,56 @@ $(document).ready(function() {
 // global variables
 var store,
     storenospace;
-    
+
 // functions
   function makestore(store) {
     storenospace = store.replace(/\s+/g, '');
-    $('.storelist').append(getItem(store,storenospace));
+    $('.storelist').append(getStoreHTML(store,storenospace));
     $('ul').sortable({tolerance: 'pointer',connectWith: '.connectedSortable'});
   }
-  
+
+  function addItem(item) {
+
+  }
+
   function getInputBox() {
-    var InputBox = '<input id=\"storeText\" type=\"text\" name=\"item\" value=\"\"><i id=\'fa-enter\' class=\"fa fa-sign-in fa-4x\"></i>';
+    var InputBox = '<input id=\"inputBox\" type=\"text\" name=\"item\" value=\"\"><i id=\'fa-enter\' class=\"fa fa-sign-in fa-4x\"></i>';
     return InputBox;
   }
-  
-  function getItem(store, storenospace) {
+
+  function getStoreHTML(store, storenospace) {
     var Item = '<div class=\'storeStem column full\'><h2>'+store+'</h2><ul id=\''+storenospace+'\' class=\'connectedSortable\'></ul><i id=\''+storenospace+'check\'class=\'fa fa-plus-circle fa-4x\'></div>';
     return Item;
   }
-  
+
 // event handlers
   $('#addStoreStem').on('click','#fa-enter', function() {
-    store = $('#storeText').val();
+    store = $('#inputBox').val();
     $('#addStore').show();
-    $('#storeText').remove();
-    $('#faenter').remove();
+    $('#inputBox').remove();
+    $('#fa-enter').remove();
     makestore(store);
+  });
+
+  $('.storelist').on('click', '.fa-plus-circle', function() {
+    $('#'+this.id).hide();
+    $(this).closest('div').append(getInputBox);
+    $('#inputBox').focus();
+  });
+
+  $('.storelist').on('click', '#fa-enter', function() {
+    var item = $('#inputBox').val();
+    console.log(item);
+    $('#inputBox').remove();
+    $('#fa-enter').remove();
   });
 
 // events
   $('#addStore').click(function() {
     $('#addStore').hide();
-    $('#storeText').show();
+    $('#inputBox').show();
     $('#addStoreStem').append(getInputBox());
-    $('#storeText').focus();
-    console.log(getInputBox());
+    $('#inputBox').focus();
   });
 
   // $('#fa-enter').click(function() {
