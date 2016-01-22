@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+// global variables
+
+// functions
+
+// events
+
   $('#addStore').click(function() {
     $('#addStore').hide();
     $('#storeText').show();
