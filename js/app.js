@@ -5,14 +5,13 @@ var store,
 
 // functions
   function makestore(store) {
-    storenospace = store.replace(/\s+/g, '');
+    storenospace = store.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '');
     $('.storelist').append(getStoreHTML(store,storenospace));
     $('ul').sortable({tolerance: 'pointer',connectWith: '.connectedSortable'});
   }
 
   function addItem(item, store) {
-    console.log(item+'--'+store);
-    $('ul#'+store).append('<li>'+item+'</li>');
+    $('ul#'+store).append(getItemHTML(item));
   }
 
   function getInputBox() {
@@ -25,8 +24,9 @@ var store,
     return Item;
   }
 
-  function getItemHTML(store, item) {
-
+  function getItemHTML(item) {
+    var ItemHTML = '<li><div class=\'item\'><i class=\"fa fa-check-square fa-3x\"></i><p>'+item+'</p><i class=\"fa fa-minus-square fa-3x\"></i></div></li>';
+    return ItemHTML;
   }
 
 // event handlers
@@ -53,6 +53,14 @@ var store,
     $('#fa-enter').remove();
   });
 
+  $('.storelist').on('click', '.fa-minus-square', function() {
+    $(this).parents('.item').remove();
+  });
+
+  $('.storelist').on('click', '.fa-check-square', function() {
+    $(this).parents('.item').toggleClass('check');
+  });
+
 // events
   $('#addStore').click(function() {
     $('#addStore').hide();
@@ -60,32 +68,5 @@ var store,
     $('#addStoreStem').append(getInputBox());
     $('#inputBox').focus();
   });
-
-  // $('#fa-enter').click(function() {
-
-
-  //   // $('.stores').on('click', '#'+storenospace+'check', function() {
-  //   //   $('.'+storenospace+'input').show();
-  //   //   $('#'+storenospace+'faenter').show();
-  //   //   $('#'+storenospace+'check').hide();
-  //   //   $('.'+storenospace+'input').focus();
-  //   // });
-  //   // $('.stores').on('click','#'+storenospace+'faenter', function(enter) {
-  //   //   $('.'+storenospace+'input').hide();
-  //   //   $('#'+storenospace+'faenter').hide();
-  //   //   $('#'+storenospace+'check').show();
-  //   //   var item = $('.'+storenospace+'input').val();
-  //   //   $('.'+storenospace+'input').val('');
-  //   //   console.log($('ul#'+storenospace));
-  //   //   $('ul#'+storenospace).append('<li><div class=\'item clearfix\'><i class=\"'+storenospace+' fa fa-check-square fa-3x\"></i><p>'+item+'</p><i id=\'#'+storenospace+'\' class=\"fa fa-minus-square fa-3x\"></i></div></li>');
-  //   // });
-  //   // $('#'+storenospace).on('click', '.fa-minus-square', function() {
-  //   //     $(this).parents('.item').remove();
-  //   // });
-  //   // $('#'+storenospace).on('click', '.'+storenospace+'.fa-check-square',function() {
-  //   //   console.log('click '+$(this).text());
-  //   //   $(this).parents('.item').toggleClass('check');
-  //   // });
-  // });
 
 });
