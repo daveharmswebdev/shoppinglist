@@ -29,13 +29,32 @@ var store,
     return ItemHTML;
   }
 
-// event handlers
-  $('#addStoreStem').on('click','#fa-enter', function() {
+  function clickEnterAddItem(what) {
+    var item = $('#inputBox').val();
+    store = ($(what).siblings('ul').attr('id'));
+    addItem(item, store);
+    $(what).siblings('i').show();
+    $('#inputBox').remove();
+    $('#fa-enter').remove();
+  }
+
+  function clickEnterAddStore() {
     store = $('#inputBox').val();
     $('#addStore').show();
     $('#inputBox').remove();
     $('#fa-enter').remove();
     makestore(store);
+  }
+
+// event handlers
+  $('#addStoreStem').on('click','#fa-enter', function() {
+    clickEnterAddStore();
+  });
+
+  $('#addStoreStem').on('keypress', '#inputBox', function(event) {
+    if (event.keyCode === 13) {
+      clickEnterAddStore();
+    }
   });
 
   $('.storelist').on('click', '.fa-plus-circle', function() {
@@ -45,13 +64,23 @@ var store,
   });
 
   $('.storelist').on('click', '#fa-enter', function() {
-    var item = $('#inputBox').val();
-    store = ($(this).siblings('ul').attr('id'));
-    addItem(item, store);
-    $(this).siblings('i').show();
-    $('#inputBox').remove();
-    $('#fa-enter').remove();
+    clickEnterAddItem(this);
   });
+
+  $('.storelist').on('keypress', '#inputBox', function(event) {
+    if (event.keyCode === 13) {
+      clickEnterAddItem(this);
+    }
+  });
+
+  // $('.storelist').on('click', '#fa-enter', function() {
+  //   var item = $('#inputBox').val();
+  //   store = ($(this).siblings('ul').attr('id'));
+  //   addItem(item, store);
+  //   $(this).siblings('i').show();
+  //   $('#inputBox').remove();
+  //   $('#fa-enter').remove();
+  // });
 
   $('.storelist').on('click', '.fa-minus-square', function() {
     $(this).parents('.item').remove();

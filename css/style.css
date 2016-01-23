@@ -183,3 +183,11 @@ li {
 .contact p {
   font-size: 2.5rem;
 }
+
+@media (min-width: 64rem) {
+  html { font-size: 65%; }
+
+  li {
+    width: 35rem;
+  }
+}
