@@ -10,8 +10,9 @@ var store,
     $('ul').sortable({tolerance: 'pointer',connectWith: '.connectedSortable'});
   }
 
-  function addItem(item) {
-
+  function addItem(item, store) {
+    console.log(item+'--'+store);
+    $('ul#'+store).append('<li>'+item+'</li>');
   }
 
   function getInputBox() {
@@ -22,6 +23,10 @@ var store,
   function getStoreHTML(store, storenospace) {
     var Item = '<div class=\'storeStem column full\'><h2>'+store+'</h2><ul id=\''+storenospace+'\' class=\'connectedSortable\'></ul><i id=\''+storenospace+'check\'class=\'fa fa-plus-circle fa-4x\'></div>';
     return Item;
+  }
+
+  function getItemHTML(store, item) {
+
   }
 
 // event handlers
@@ -41,7 +46,9 @@ var store,
 
   $('.storelist').on('click', '#fa-enter', function() {
     var item = $('#inputBox').val();
-    console.log(item);
+    store = ($(this).siblings('ul').attr('id'));
+    addItem(item, store);
+    $(this).siblings('i').show();
     $('#inputBox').remove();
     $('#fa-enter').remove();
   });
