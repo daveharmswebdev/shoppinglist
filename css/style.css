@@ -125,6 +125,10 @@ i {
   color: rgb( 85,  0,  0);
 }
 
+.fa-plus-circle {
+  margin: -0.25rem 0 2rem 0;
+}
+
 ul {
   padding: 0;
 }
